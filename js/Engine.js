@@ -20,6 +20,7 @@ class Engine {
     this.text = new Text(this.root, 150, 100);
     this.pointText = new Text(this.root, 10, 10);
     this.doubleText = new Text(this.root, 10, 40);
+    this.highscoreText = new Text(this.root, 310, 10);
   }
 
   // The gameLoop will run every few milliseconds. It does several things
@@ -59,12 +60,24 @@ class Engine {
       if (answer === true) {
         location.reload();
       }
+      //localStorage.setItem("newHighscore", 0);
+      let highscore = localStorage.getItem("newHighscore");
+      if (highscore === undefined) {
+        highscore = 0;
+      }
+      //console.log("debugging :", localStorage, highscore, counter);
+      if (counter > highscore) {
+        localStorage.setItem("newHighscore", counter);
+        console.log("Counter :", counter);
+      }
       stillAlive = false;
       enlarge = false;
       return;
     } else {
       this.pointText.update(counter);
       this.pointText.updateOpacity("0.7");
+      this.highscoreText.updateOpacity("0.7");
+      this.highscoreText.update(localStorage.getItem("newHighscore"));
     }
 
     // If the player is not dead, then we put a setTimeout to run the gameLoop in 20 milliseconds
