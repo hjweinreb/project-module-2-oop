@@ -18,4 +18,5 @@ const MAX_ENEMIES = 3;
 const PLAYER_WIDTH = 75;
 const PLAYER_HEIGHT = 54;
 
-
+// Highscore
+//localStorage.setItem("newHighscore", highscore);

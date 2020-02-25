@@ -29,11 +29,14 @@ class Player {
         }
         this.domElement.style.left = `${this.x}px`;
     }
+    
+    
     // We do the same thing for the right key. See Engine.js to see when this happens.
     moveRight() {
         if (this.x + PLAYER_WIDTH < GAME_WIDTH) {
             this.x = this.x + PLAYER_WIDTH;
         }
         this.domElement.style.left = `${this.x}px`;
+
     }
 }
